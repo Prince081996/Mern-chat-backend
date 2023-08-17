@@ -14,6 +14,10 @@ const messageSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Chat",
     },
+    thread_id:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"Thread"
+    }
   },
   {
     timestamps: true,

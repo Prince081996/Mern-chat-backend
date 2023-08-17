@@ -88,4 +88,13 @@ io.on("connection", (socket) => {
       socket.in(user._id).emit("message received", newMessageReceived);
     });
   });
+
+  socket.on("calling",(selectedChat) => {
+    const loggedInUser = selectedChat?.loggedInUser
+    console.log(loggedInUser,"users",selectedChat)
+     selectedChat.users?.forEach((user) => {
+      if(user._id !== loggedInUser._id)          return
+    socket.in(user._id).emit("calling received",loggedInUser)
+    })
+  })
 });
